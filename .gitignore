@@ -364,3 +364,4 @@ FodyWeavers.xsd
 
 # EXCEPCIONES PARA BACKUPS DE BASES DE DATOS
 !DB_Backups/
+!DB_Backups/*.bak
