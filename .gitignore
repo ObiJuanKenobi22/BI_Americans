@@ -361,3 +361,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# EXCEPCIONES PARA BACKUPS DE BASES DE DATOS
+!DB_Backups/
