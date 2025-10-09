@@ -1,0 +1,100 @@
+# ===================================================================
+# ## Archivo .gitignore para Visual Studio / .NET ##
+# Modificado para permitir archivos de backup de SQL Server (.bak)
+# ===================================================================
+
+## Archivos y carpetas específicos del sistema operativo
+#
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+## Carpetas de compilación y salida de Visual Studio
+#
+[Bb]in/
+[Oo]bj/
+[Rr]elease/
+[Dd]ebug/
+x64/
+x86/
+build/
+Build/
+bld/
+
+## Archivos de proyecto y solución temporales y de usuario
+#
+# Estos archivos guardan configuraciones específicas de tu máquina y no
+# deben compartirse con otros colaboradores.
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.userprefs
+*.vspscc
+
+# Archivos de caché de Visual Studio
+.vs/
+*.csproj.user
+*.vcxproj.user
+*.dbmdl
+*.jfm
+
+## Archivos de respaldo y temporales comunes
+#
+# IMPORTANTE: La línea que ignoraba los *.bak ha sido eliminada.
+# Si en el futuro quieres volver a ignorarlos, solo añade la línea: *.bak
+*~
+*.tmp
+*.bak-
+*.orig
+*_i.c
+*_p.c
+*_h.h
+
+## Archivos de profiling y testing
+#
+*.psess
+*.vsp
+*.vspx
+*.log
+*.coverage
+*.coveragexml
+TestResult.xml
+*.trx
+
+## Otros archivos y carpetas
+#
+# Nuget Packages
+# Evita subir los paquetes descargados. Se restauran con 'dotnet restore'.
+*.nupkg
+*.nuget.props
+*.nuget.targets
+packages/
+!packages/repositories.config
+
+# Archivos de publicación
+*.Publish.xml
+*.pubxml
+*.publishproj
+
+# Archivos de base de datos local
+*.mdf
+*.ldf
+*.sdf
+
+# Secretos y variables de entorno (¡nunca subas esto!)
+secrets.json
+appsettings.Development.json
+user-secrets/
+.env
+
+# Archivos de JetBrains Rider / Resharper
+_ReSharper*/
+*.resharper
+*.idea/
