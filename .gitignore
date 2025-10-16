@@ -94,7 +94,6 @@ appsettings.Development.json
 user-secrets/
 .env
 
-# Archivos de JetBrains Rider / Resharper
-_ReSharper*/
-*.resharper
-*.idea/
+# EXCEPCIONES PARA BACKUPS DE BASES DE DATOS
+!DB_Backups/
+!DB_Backups/*.bak
