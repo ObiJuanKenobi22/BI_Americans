@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="58"
-  DTS:VersionGUID="{E0C57980-0505-4CC8-95BC-875E0E91C835}">
+  DTS:VersionBuild="66"
+  DTS:VersionGUID="{EF132BC3-68A2-4E56-A6C2-DCF03C597545}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -86,6 +86,18 @@
           DTS:ConnectRetryCount="0"
           DTS:ConnectRetryInterval="0"
           DTS:ConnectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Bases\dimtiempo97.xls;Extended Properties=&quot;EXCEL 8.0;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager 4]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{94EDD79E-3CC5-4CFC-A56D-A2921548A92C}"
+      DTS:ObjectName="Excel Connection Manager 4">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Administrator\Downloads\Novedades cliente97.xls;Extended Properties=&quot;Excel 8.0;HDR=YES&quot;;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -201,6 +213,1461 @@
   </DTS:ConnectionManagers>
   <DTS:Variables />
   <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Contenedor Novedades"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{A8F0C6AC-8A01-4416-9022-C47E5C8FEF03}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Contenedor Novedades">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Contenedor Novedades\Elimina nov cliente"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{28A394C1-B0AE-4AB7-A7DA-5C679DD2B7D9}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Elimina nov cliente"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{B9962E46-7B97-4462-A5F8-727A0D4BC1BF}"
+              SQLTask:SqlStatementSource="DELETE FROM Cliente_Paso;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Contenedor Novedades\Excel"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{2D6C8C5B-4A19-4A9A-9D28-7FA51AEB2A7B}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Excel"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Contenedor Novedades\Excel\Cliente Paso"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="Cliente Paso"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[Cliente_Paso]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">true</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Contenedor Novedades\Excel\Cliente Paso.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[EC2AMAZ-S4OAO10.Americans_DW]"
+                      connectionManagerRefId="Package.ConnectionManagers[EC2AMAZ-S4OAO10.Americans_DW]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Contenedor Novedades\Excel\Cliente Paso.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Excel\Cliente Paso.Inputs[OLE DB Destination Input].Columns[Desc_Cod_CLIENTE]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Desc_Cod_CLIENTE"
+                          externalMetadataColumnId="Package\Contenedor Novedades\Excel\Cliente Paso.Inputs[OLE DB Destination Input].ExternalColumns[Desc_Cod_CLIENTE]"
+                          lineageId="Package\Contenedor Novedades\Excel\NovClientes.Outputs[Excel Source Output].Columns[Desc_Cod_CLIENTE]" />
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Excel\Cliente Paso.Inputs[OLE DB Destination Input].Columns[Desc_NOMBRE]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Desc_NOMBRE"
+                          externalMetadataColumnId="Package\Contenedor Novedades\Excel\Cliente Paso.Inputs[OLE DB Destination Input].ExternalColumns[Desc_NOMBRE]"
+                          lineageId="Package\Contenedor Novedades\Excel\NovClientes.Outputs[Excel Source Output].Columns[Desc_NOMBRE]" />
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Excel\Cliente Paso.Inputs[OLE DB Destination Input].Columns[ESTADO_CIVIL]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="ESTADO_CIVIL"
+                          externalMetadataColumnId="Package\Contenedor Novedades\Excel\Cliente Paso.Inputs[OLE DB Destination Input].ExternalColumns[ESTADO_CIVIL]"
+                          lineageId="Package\Contenedor Novedades\Excel\NovClientes.Outputs[Excel Source Output].Columns[ESTADO_CIVIL]" />
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Excel\Cliente Paso.Inputs[OLE DB Destination Input].Columns[ID_CLIENTE]"
+                          cachedDataType="i4"
+                          cachedName="ID_CLIENTE"
+                          externalMetadataColumnId="Package\Contenedor Novedades\Excel\Cliente Paso.Inputs[OLE DB Destination Input].ExternalColumns[ID_CLIENTE]"
+                          lineageId="Package\Contenedor Novedades\Excel\Data Conversion.Outputs[Data Conversion Output].Columns[ID_CLIENTE]" />
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Excel\Cliente Paso.Inputs[OLE DB Destination Input].Columns[Desc_EDAD]"
+                          cachedDataType="i2"
+                          cachedName="Desc_EDAD"
+                          externalMetadataColumnId="Package\Contenedor Novedades\Excel\Cliente Paso.Inputs[OLE DB Destination Input].ExternalColumns[Desc_EDAD]"
+                          lineageId="Package\Contenedor Novedades\Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Desc_EDAD]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Novedades\Excel\Cliente Paso.Inputs[OLE DB Destination Input].ExternalColumns[ID_CLIENTE]"
+                          dataType="i4"
+                          name="ID_CLIENTE" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Novedades\Excel\Cliente Paso.Inputs[OLE DB Destination Input].ExternalColumns[Desc_Cod_CLIENTE]"
+                          dataType="wstr"
+                          length="255"
+                          name="Desc_Cod_CLIENTE" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Novedades\Excel\Cliente Paso.Inputs[OLE DB Destination Input].ExternalColumns[Desc_NOMBRE]"
+                          dataType="wstr"
+                          length="255"
+                          name="Desc_NOMBRE" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Novedades\Excel\Cliente Paso.Inputs[OLE DB Destination Input].ExternalColumns[Desc_EDAD]"
+                          dataType="i2"
+                          name="Desc_EDAD" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Novedades\Excel\Cliente Paso.Inputs[OLE DB Destination Input].ExternalColumns[ESTADO_CIVIL]"
+                          dataType="wstr"
+                          length="255"
+                          name="ESTADO_CIVIL" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Contenedor Novedades\Excel\Cliente Paso.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Contenedor Novedades\Excel\Cliente Paso.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Excel\Cliente Paso.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Novedades\Excel\Cliente Paso.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Excel\Cliente Paso.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Novedades\Excel\Cliente Paso.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Contenedor Novedades\Excel\Data Conversion"
+                  componentClassID="Microsoft.DataConvert"
+                  contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Data Conversion"
+                  name="Data Conversion"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Contenedor Novedades\Excel\Data Conversion.Inputs[Data Conversion Input]"
+                      name="Data Conversion Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Excel\Data Conversion.Inputs[Data Conversion Input].Columns[ID_CLIENTE]"
+                          cachedDataType="r8"
+                          cachedName="ID_CLIENTE"
+                          lineageId="Package\Contenedor Novedades\Excel\NovClientes.Outputs[Excel Source Output].Columns[ID_CLIENTE]" />
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Excel\Data Conversion.Inputs[Data Conversion Input].Columns[Desc_EDAD]"
+                          cachedDataType="r8"
+                          cachedName="Desc_EDAD"
+                          lineageId="Package\Contenedor Novedades\Excel\NovClientes.Outputs[Excel Source Output].Columns[Desc_EDAD]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Contenedor Novedades\Excel\Data Conversion.Outputs[Data Conversion Output]"
+                      exclusionGroup="1"
+                      name="Data Conversion Output"
+                      synchronousInputId="Package\Contenedor Novedades\Excel\Data Conversion.Inputs[Data Conversion Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Excel\Data Conversion.Outputs[Data Conversion Output].Columns[ID_CLIENTE]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Contenedor Novedades\Excel\Data Conversion.Outputs[Data Conversion Output].Columns[ID_CLIENTE]"
+                          name="ID_CLIENTE"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Contenedor Novedades\Excel\NovClientes.Outputs[Excel Source Output].Columns[ID_CLIENTE]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Desc_EDAD]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Contenedor Novedades\Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Desc_EDAD]"
+                          name="Desc_EDAD"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Contenedor Novedades\Excel\NovClientes.Outputs[Excel Source Output].Columns[Desc_EDAD]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Contenedor Novedades\Excel\Data Conversion.Outputs[Data Conversion Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Data Conversion Error Output"
+                      synchronousInputId="Package\Contenedor Novedades\Excel\Data Conversion.Inputs[Data Conversion Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Excel\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Novedades\Excel\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Excel\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Novedades\Excel\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Contenedor Novedades\Excel\NovClientes"
+                  componentClassID="Microsoft.ExcelSource"
+                  contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Excel Source"
+                  name="NovClientes"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">NovDim$</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mapping from parameters in the SQL command to variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Contenedor Novedades\Excel\NovClientes.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[Excel Connection Manager 4]"
+                      connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager 4]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Contenedor Novedades\Excel\NovClientes.Outputs[Excel Source Output]"
+                      name="Excel Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Excel\NovClientes.Outputs[Excel Source Output].Columns[ID_CLIENTE]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor Novedades\Excel\NovClientes.Outputs[Excel Source Output].ExternalColumns[ID_CLIENTE]"
+                          lineageId="Package\Contenedor Novedades\Excel\NovClientes.Outputs[Excel Source Output].Columns[ID_CLIENTE]"
+                          name="ID_CLIENTE"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Excel\NovClientes.Outputs[Excel Source Output].Columns[Desc_Cod_CLIENTE]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor Novedades\Excel\NovClientes.Outputs[Excel Source Output].ExternalColumns[Desc_Cod_CLIENTE]"
+                          length="255"
+                          lineageId="Package\Contenedor Novedades\Excel\NovClientes.Outputs[Excel Source Output].Columns[Desc_Cod_CLIENTE]"
+                          name="Desc_Cod_CLIENTE"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Excel\NovClientes.Outputs[Excel Source Output].Columns[Desc_NOMBRE]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor Novedades\Excel\NovClientes.Outputs[Excel Source Output].ExternalColumns[Desc_NOMBRE]"
+                          length="255"
+                          lineageId="Package\Contenedor Novedades\Excel\NovClientes.Outputs[Excel Source Output].Columns[Desc_NOMBRE]"
+                          name="Desc_NOMBRE"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Excel\NovClientes.Outputs[Excel Source Output].Columns[Desc_EDAD]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor Novedades\Excel\NovClientes.Outputs[Excel Source Output].ExternalColumns[Desc_EDAD]"
+                          lineageId="Package\Contenedor Novedades\Excel\NovClientes.Outputs[Excel Source Output].Columns[Desc_EDAD]"
+                          name="Desc_EDAD"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Excel\NovClientes.Outputs[Excel Source Output].Columns[ESTADO_CIVIL]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor Novedades\Excel\NovClientes.Outputs[Excel Source Output].ExternalColumns[ESTADO_CIVIL]"
+                          length="255"
+                          lineageId="Package\Contenedor Novedades\Excel\NovClientes.Outputs[Excel Source Output].Columns[ESTADO_CIVIL]"
+                          name="ESTADO_CIVIL"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Novedades\Excel\NovClientes.Outputs[Excel Source Output].ExternalColumns[ID_CLIENTE]"
+                          dataType="r8"
+                          name="ID_CLIENTE" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Novedades\Excel\NovClientes.Outputs[Excel Source Output].ExternalColumns[Desc_Cod_CLIENTE]"
+                          dataType="wstr"
+                          length="255"
+                          name="Desc_Cod_CLIENTE" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Novedades\Excel\NovClientes.Outputs[Excel Source Output].ExternalColumns[Desc_NOMBRE]"
+                          dataType="wstr"
+                          length="255"
+                          name="Desc_NOMBRE" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Novedades\Excel\NovClientes.Outputs[Excel Source Output].ExternalColumns[Desc_EDAD]"
+                          dataType="r8"
+                          name="Desc_EDAD" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Novedades\Excel\NovClientes.Outputs[Excel Source Output].ExternalColumns[ESTADO_CIVIL]"
+                          dataType="wstr"
+                          length="255"
+                          name="ESTADO_CIVIL" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Contenedor Novedades\Excel\NovClientes.Outputs[Excel Source Error Output]"
+                      isErrorOut="true"
+                      name="Excel Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Excel\NovClientes.Outputs[Excel Source Error Output].Columns[ID_CLIENTE]"
+                          dataType="r8"
+                          lineageId="Package\Contenedor Novedades\Excel\NovClientes.Outputs[Excel Source Error Output].Columns[ID_CLIENTE]"
+                          name="ID_CLIENTE" />
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Excel\NovClientes.Outputs[Excel Source Error Output].Columns[Desc_Cod_CLIENTE]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Contenedor Novedades\Excel\NovClientes.Outputs[Excel Source Error Output].Columns[Desc_Cod_CLIENTE]"
+                          name="Desc_Cod_CLIENTE" />
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Excel\NovClientes.Outputs[Excel Source Error Output].Columns[Desc_NOMBRE]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Contenedor Novedades\Excel\NovClientes.Outputs[Excel Source Error Output].Columns[Desc_NOMBRE]"
+                          name="Desc_NOMBRE" />
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Excel\NovClientes.Outputs[Excel Source Error Output].Columns[Desc_EDAD]"
+                          dataType="r8"
+                          lineageId="Package\Contenedor Novedades\Excel\NovClientes.Outputs[Excel Source Error Output].Columns[Desc_EDAD]"
+                          name="Desc_EDAD" />
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Excel\NovClientes.Outputs[Excel Source Error Output].Columns[ESTADO_CIVIL]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Contenedor Novedades\Excel\NovClientes.Outputs[Excel Source Error Output].Columns[ESTADO_CIVIL]"
+                          name="ESTADO_CIVIL" />
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Excel\NovClientes.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Novedades\Excel\NovClientes.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Excel\NovClientes.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Novedades\Excel\NovClientes.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Contenedor Novedades\Excel.Paths[Data Conversion Output]"
+                  endId="Package\Contenedor Novedades\Excel\Cliente Paso.Inputs[OLE DB Destination Input]"
+                  name="Data Conversion Output"
+                  startId="Package\Contenedor Novedades\Excel\Data Conversion.Outputs[Data Conversion Output]" />
+                <path
+                  refId="Package\Contenedor Novedades\Excel.Paths[Excel Source Output]"
+                  endId="Package\Contenedor Novedades\Excel\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Excel Source Output"
+                  startId="Package\Contenedor Novedades\Excel\NovClientes.Outputs[Excel Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Contenedor Novedades\Novedades Cliente"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{5E23F629-68E7-4944-B324-238926B9993A}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Novedades Cliente"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Contenedor Novedades\Novedades Cliente\Actualizar"
+                  componentClassID="Microsoft.OLEDBCommand"
+                  contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+                  description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+                  name="Actualizar"
+                  usesDispositions="true"
+                  version="2">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[Dim_CLIENTE]
+   SET [Desc_Cod_CLIENTE] = ?
+      ,[Desc_NOMBRE] = ?
+      ,[Desc_EDAD] = ?
+      ,[ESTADO_CIVIL] = ?
+ WHERE ID_CLIENTE = ?</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Contenedor Novedades\Novedades Cliente\Actualizar.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[EC2AMAZ-S4OAO10.Americans_DW]"
+                      connectionManagerRefId="Package.ConnectionManagers[EC2AMAZ-S4OAO10.Americans_DW]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Contenedor Novedades\Novedades Cliente\Actualizar.Inputs[OLE DB Command Input]"
+                      errorOrTruncationOperation="Command Execution"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Command Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Novedades Cliente\Actualizar.Inputs[OLE DB Command Input].Columns[Desc_Cod_CLIENTE]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Desc_Cod_CLIENTE"
+                          externalMetadataColumnId="Package\Contenedor Novedades\Novedades Cliente\Actualizar.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                          lineageId="Package\Contenedor Novedades\Novedades Cliente\Tabla de paso.Outputs[OLE DB Source Output].Columns[Desc_Cod_CLIENTE]" />
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Novedades Cliente\Actualizar.Inputs[OLE DB Command Input].Columns[Desc_NOMBRE]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Desc_NOMBRE"
+                          externalMetadataColumnId="Package\Contenedor Novedades\Novedades Cliente\Actualizar.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                          lineageId="Package\Contenedor Novedades\Novedades Cliente\Tabla de paso.Outputs[OLE DB Source Output].Columns[Desc_NOMBRE]" />
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Novedades Cliente\Actualizar.Inputs[OLE DB Command Input].Columns[Desc_EDAD]"
+                          cachedDataType="i2"
+                          cachedName="Desc_EDAD"
+                          externalMetadataColumnId="Package\Contenedor Novedades\Novedades Cliente\Actualizar.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                          lineageId="Package\Contenedor Novedades\Novedades Cliente\Tabla de paso.Outputs[OLE DB Source Output].Columns[Desc_EDAD]" />
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Novedades Cliente\Actualizar.Inputs[OLE DB Command Input].Columns[ESTADO_CIVIL]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="ESTADO_CIVIL"
+                          externalMetadataColumnId="Package\Contenedor Novedades\Novedades Cliente\Actualizar.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                          lineageId="Package\Contenedor Novedades\Novedades Cliente\Tabla de paso.Outputs[OLE DB Source Output].Columns[ESTADO_CIVIL]" />
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Novedades Cliente\Actualizar.Inputs[OLE DB Command Input].Columns[ID_CLIENTE]"
+                          cachedDataType="i4"
+                          cachedName="ID_CLIENTE"
+                          externalMetadataColumnId="Package\Contenedor Novedades\Novedades Cliente\Actualizar.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                          lineageId="Package\Contenedor Novedades\Novedades Cliente\Tabla de paso.Outputs[OLE DB Source Output].Columns[ID_CLIENTE]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Novedades\Novedades Cliente\Actualizar.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                          dataType="wstr"
+                          length="255"
+                          name="Param_0">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Novedades\Novedades Cliente\Actualizar.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                          dataType="wstr"
+                          length="255"
+                          name="Param_1">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Novedades\Novedades Cliente\Actualizar.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                          dataType="i2"
+                          name="Param_2">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">81</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Novedades\Novedades Cliente\Actualizar.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                          dataType="wstr"
+                          length="255"
+                          name="Param_3">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Novedades\Novedades Cliente\Actualizar.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                          dataType="i4"
+                          name="Param_4">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">81</property>
+                          </properties>
+                        </externalMetadataColumn>
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Contenedor Novedades\Novedades Cliente\Actualizar.Outputs[OLE DB Command Output]"
+                      exclusionGroup="1"
+                      name="OLE DB Command Output"
+                      synchronousInputId="Package\Contenedor Novedades\Novedades Cliente\Actualizar.Inputs[OLE DB Command Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Contenedor Novedades\Novedades Cliente\Actualizar.Outputs[OLE DB Command Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Command Error Output"
+                      synchronousInputId="Package\Contenedor Novedades\Novedades Cliente\Actualizar.Inputs[OLE DB Command Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Novedades Cliente\Actualizar.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Novedades\Novedades Cliente\Actualizar.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Novedades Cliente\Actualizar.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Novedades\Novedades Cliente\Actualizar.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Contenedor Novedades\Novedades Cliente\Conditional Split"
+                  componentClassID="Microsoft.ConditionalSplit"
+                  contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+                  name="Conditional Split"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Contenedor Novedades\Novedades Cliente\Conditional Split.Inputs[Conditional Split Input]"
+                      description="Input to the Conditional Split Transformation"
+                      name="Conditional Split Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Novedades Cliente\Conditional Split.Inputs[Conditional Split Input].Columns[Desc_Cod_CLIENTE]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Desc_Cod_CLIENTE"
+                          lineageId="Package\Contenedor Novedades\Novedades Cliente\Tabla de paso.Outputs[OLE DB Source Output].Columns[Desc_Cod_CLIENTE]" />
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Novedades Cliente\Conditional Split.Inputs[Conditional Split Input].Columns[Desc_NOMBRE]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Desc_NOMBRE"
+                          lineageId="Package\Contenedor Novedades\Novedades Cliente\Tabla de paso.Outputs[OLE DB Source Output].Columns[Desc_NOMBRE]" />
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Novedades Cliente\Conditional Split.Inputs[Conditional Split Input].Columns[Desc_EDAD]"
+                          cachedDataType="i2"
+                          cachedName="Desc_EDAD"
+                          lineageId="Package\Contenedor Novedades\Novedades Cliente\Tabla de paso.Outputs[OLE DB Source Output].Columns[Desc_EDAD]" />
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Novedades Cliente\Conditional Split.Inputs[Conditional Split Input].Columns[ESTADO_CIVIL]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="ESTADO_CIVIL"
+                          lineageId="Package\Contenedor Novedades\Novedades Cliente\Tabla de paso.Outputs[OLE DB Source Output].Columns[ESTADO_CIVIL]" />
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Novedades Cliente\Conditional Split.Inputs[Conditional Split Input].Columns[ID_CLIENTE]"
+                          cachedDataType="i4"
+                          cachedName="ID_CLIENTE"
+                          lineageId="Package\Contenedor Novedades\Novedades Cliente\Lookup.Outputs[Lookup Match Output].Columns[ID_CLIENTE]" />
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Novedades Cliente\Conditional Split.Inputs[Conditional Split Input].Columns[Desc_Cod_CLIENTE1]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Desc_Cod_CLIENTE"
+                          lineageId="Package\Contenedor Novedades\Novedades Cliente\Lookup.Outputs[Lookup Match Output].Columns[Desc_Cod_CLIENTE]" />
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Novedades Cliente\Conditional Split.Inputs[Conditional Split Input].Columns[Desc_NOMBRE1]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Desc_NOMBRE"
+                          lineageId="Package\Contenedor Novedades\Novedades Cliente\Lookup.Outputs[Lookup Match Output].Columns[Desc_NOMBRE]" />
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Novedades Cliente\Conditional Split.Inputs[Conditional Split Input].Columns[Desc_EDAD1]"
+                          cachedDataType="i2"
+                          cachedName="Desc_EDAD"
+                          lineageId="Package\Contenedor Novedades\Novedades Cliente\Lookup.Outputs[Lookup Match Output].Columns[Desc_EDAD]" />
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Novedades Cliente\Conditional Split.Inputs[Conditional Split Input].Columns[ESTADO_CIVIL1]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="ESTADO_CIVIL"
+                          lineageId="Package\Contenedor Novedades\Novedades Cliente\Lookup.Outputs[Lookup Match Output].Columns[ESTADO_CIVIL]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Contenedor Novedades\Novedades Cliente\Conditional Split.Outputs[Insertar]"
+                      description="Output 1 of the Conditional Split Transformation"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      exclusionGroup="1"
+                      name="Insertar"
+                      synchronousInputId="Package\Contenedor Novedades\Novedades Cliente\Conditional Split.Inputs[Conditional Split Input]"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                          name="Expression">[ISNULL](#{Package\Contenedor Novedades\Novedades Cliente\Lookup.Outputs[Lookup Match Output].Columns[ID_CLIENTE]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Specifies the friendly version of the expression. This expression version uses column names."
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL(Lookup.ID_CLIENTE)</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                          name="EvaluationOrder">0</property>
+                      </properties>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Contenedor Novedades\Novedades Cliente\Conditional Split.Outputs[Actualizar]"
+                      description="Output 2 of the Conditional Split Transformation"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      exclusionGroup="1"
+                      name="Actualizar"
+                      synchronousInputId="Package\Contenedor Novedades\Novedades Cliente\Conditional Split.Inputs[Conditional Split Input]"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                          name="Expression">#{Package\Contenedor Novedades\Novedades Cliente\Tabla de paso.Outputs[OLE DB Source Output].Columns[Desc_Cod_CLIENTE]} != #{Package\Contenedor Novedades\Novedades Cliente\Lookup.Outputs[Lookup Match Output].Columns[Desc_Cod_CLIENTE]} || #{Package\Contenedor Novedades\Novedades Cliente\Tabla de paso.Outputs[OLE DB Source Output].Columns[Desc_NOMBRE]} != #{Package\Contenedor Novedades\Novedades Cliente\Lookup.Outputs[Lookup Match Output].Columns[Desc_NOMBRE]} || #{Package\Contenedor Novedades\Novedades Cliente\Tabla de paso.Outputs[OLE DB Source Output].Columns[Desc_EDAD]} != #{Package\Contenedor Novedades\Novedades Cliente\Lookup.Outputs[Lookup Match Output].Columns[Desc_EDAD]} || #{Package\Contenedor Novedades\Novedades Cliente\Tabla de paso.Outputs[OLE DB Source Output].Columns[ESTADO_CIVIL]} != #{Package\Contenedor Novedades\Novedades Cliente\Lookup.Outputs[Lookup Match Output].Columns[ESTADO_CIVIL]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Specifies the friendly version of the expression. This expression version uses column names."
+                          expressionType="Notify"
+                          name="FriendlyExpression">[Tabla de paso].Desc_Cod_CLIENTE != Lookup.Desc_Cod_CLIENTE || [Tabla de paso].Desc_NOMBRE != Lookup.Desc_NOMBRE || [Tabla de paso].Desc_EDAD != Lookup.Desc_EDAD || [Tabla de paso].ESTADO_CIVIL != Lookup.ESTADO_CIVIL</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                          name="EvaluationOrder">1</property>
+                      </properties>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Contenedor Novedades\Novedades Cliente\Conditional Split.Outputs[Conditional Split Default Output]"
+                      description="Default Output of the Conditional Split Transformation"
+                      exclusionGroup="1"
+                      name="Conditional Split Default Output"
+                      synchronousInputId="Package\Contenedor Novedades\Novedades Cliente\Conditional Split.Inputs[Conditional Split Input]">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsDefaultOut">true</property>
+                      </properties>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Contenedor Novedades\Novedades Cliente\Conditional Split.Outputs[Conditional Split Error Output]"
+                      description="Error Output of the Conditional Split Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Conditional Split Error Output"
+                      synchronousInputId="Package\Contenedor Novedades\Novedades Cliente\Conditional Split.Inputs[Conditional Split Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Novedades Cliente\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Novedades\Novedades Cliente\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Novedades Cliente\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Novedades\Novedades Cliente\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Contenedor Novedades\Novedades Cliente\Insertar"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="Insertar"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Dim_CLIENTE]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">true</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Contenedor Novedades\Novedades Cliente\Insertar.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[EC2AMAZ-S4OAO10.Americans_DW]"
+                      connectionManagerRefId="Package.ConnectionManagers[EC2AMAZ-S4OAO10.Americans_DW]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Contenedor Novedades\Novedades Cliente\Insertar.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Novedades Cliente\Insertar.Inputs[OLE DB Destination Input].Columns[ID_CLIENTE]"
+                          cachedDataType="i4"
+                          cachedName="ID_CLIENTE"
+                          externalMetadataColumnId="Package\Contenedor Novedades\Novedades Cliente\Insertar.Inputs[OLE DB Destination Input].ExternalColumns[ID_CLIENTE]"
+                          lineageId="Package\Contenedor Novedades\Novedades Cliente\Tabla de paso.Outputs[OLE DB Source Output].Columns[ID_CLIENTE]" />
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Novedades Cliente\Insertar.Inputs[OLE DB Destination Input].Columns[Desc_Cod_CLIENTE]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Desc_Cod_CLIENTE"
+                          externalMetadataColumnId="Package\Contenedor Novedades\Novedades Cliente\Insertar.Inputs[OLE DB Destination Input].ExternalColumns[Desc_Cod_CLIENTE]"
+                          lineageId="Package\Contenedor Novedades\Novedades Cliente\Tabla de paso.Outputs[OLE DB Source Output].Columns[Desc_Cod_CLIENTE]" />
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Novedades Cliente\Insertar.Inputs[OLE DB Destination Input].Columns[Desc_NOMBRE]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Desc_NOMBRE"
+                          externalMetadataColumnId="Package\Contenedor Novedades\Novedades Cliente\Insertar.Inputs[OLE DB Destination Input].ExternalColumns[Desc_NOMBRE]"
+                          lineageId="Package\Contenedor Novedades\Novedades Cliente\Tabla de paso.Outputs[OLE DB Source Output].Columns[Desc_NOMBRE]" />
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Novedades Cliente\Insertar.Inputs[OLE DB Destination Input].Columns[Desc_EDAD]"
+                          cachedDataType="i2"
+                          cachedName="Desc_EDAD"
+                          externalMetadataColumnId="Package\Contenedor Novedades\Novedades Cliente\Insertar.Inputs[OLE DB Destination Input].ExternalColumns[Desc_EDAD]"
+                          lineageId="Package\Contenedor Novedades\Novedades Cliente\Tabla de paso.Outputs[OLE DB Source Output].Columns[Desc_EDAD]" />
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Novedades Cliente\Insertar.Inputs[OLE DB Destination Input].Columns[ESTADO_CIVIL]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="ESTADO_CIVIL"
+                          externalMetadataColumnId="Package\Contenedor Novedades\Novedades Cliente\Insertar.Inputs[OLE DB Destination Input].ExternalColumns[ESTADO_CIVIL]"
+                          lineageId="Package\Contenedor Novedades\Novedades Cliente\Tabla de paso.Outputs[OLE DB Source Output].Columns[ESTADO_CIVIL]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Novedades\Novedades Cliente\Insertar.Inputs[OLE DB Destination Input].ExternalColumns[ID_CLIENTE]"
+                          dataType="i4"
+                          name="ID_CLIENTE" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Novedades\Novedades Cliente\Insertar.Inputs[OLE DB Destination Input].ExternalColumns[Desc_Cod_CLIENTE]"
+                          dataType="wstr"
+                          length="255"
+                          name="Desc_Cod_CLIENTE" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Novedades\Novedades Cliente\Insertar.Inputs[OLE DB Destination Input].ExternalColumns[Desc_NOMBRE]"
+                          dataType="wstr"
+                          length="255"
+                          name="Desc_NOMBRE" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Novedades\Novedades Cliente\Insertar.Inputs[OLE DB Destination Input].ExternalColumns[Desc_EDAD]"
+                          dataType="i2"
+                          name="Desc_EDAD" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Novedades\Novedades Cliente\Insertar.Inputs[OLE DB Destination Input].ExternalColumns[ESTADO_CIVIL]"
+                          dataType="wstr"
+                          length="255"
+                          name="ESTADO_CIVIL" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Contenedor Novedades\Novedades Cliente\Insertar.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Contenedor Novedades\Novedades Cliente\Insertar.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Novedades Cliente\Insertar.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Novedades\Novedades Cliente\Insertar.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Novedades Cliente\Insertar.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Novedades\Novedades Cliente\Insertar.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Contenedor Novedades\Novedades Cliente\Lookup"
+                  componentClassID="Microsoft.Lookup"
+                  contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+                  description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+                  name="Lookup"
+                  usesDispositions="true"
+                  version="6">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the SQL statement that generates the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[Dim_CLIENTE]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommandParam"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[Dim_CLIENTE]) [refTable]
+where [refTable].[ID_CLIENTE] = ?</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the type of connection used to access the reference dataset."
+                      name="ConnectionType"
+                      typeConverter="LookupConnectionType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the cache type of the lookup table."
+                      name="CacheType"
+                      typeConverter="CacheType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                      name="NoMatchBehavior"
+                      typeConverter="LookupNoMatchBehavior">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                      name="NoMatchCachePercentage">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                      name="MaxMemoryUsage">25</property>
+                    <property
+                      dataType="System.Int64"
+                      description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                      name="MaxMemoryUsage64">25</property>
+                    <property
+                      dataType="System.String"
+                      description="Indicates whether to reference metadata in an XML format."
+                      name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ID_CLIENTE" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Desc_Cod_CLIENTE" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Desc_NOMBRE" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Desc_EDAD" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ESTADO_CIVIL" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                      name="ParameterMap">#{Package\Contenedor Novedades\Novedades Cliente\Tabla de paso.Outputs[OLE DB Source Output].Columns[ID_CLIENTE]};</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                      name="TreatDuplicateKeysAsError">false</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Contenedor Novedades\Novedades Cliente\Lookup.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[EC2AMAZ-S4OAO10.Americans_DW]"
+                      connectionManagerRefId="Package.ConnectionManagers[EC2AMAZ-S4OAO10.Americans_DW]"
+                      description="Connection manager used to access lookup data."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Contenedor Novedades\Novedades Cliente\Lookup.Inputs[Lookup Input]"
+                      name="Lookup Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Novedades Cliente\Lookup.Inputs[Lookup Input].Columns[ID_CLIENTE]"
+                          cachedDataType="i4"
+                          cachedName="ID_CLIENTE"
+                          lineageId="Package\Contenedor Novedades\Novedades Cliente\Tabla de paso.Outputs[OLE DB Source Output].Columns[ID_CLIENTE]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table that a column joins."
+                              name="JoinToReferenceColumn">ID_CLIENTE</property>
+                            <property
+                              dataType="System.Null"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Contenedor Novedades\Novedades Cliente\Lookup.Outputs[Lookup Match Output]"
+                      errorOrTruncationOperation="Lookup"
+                      errorRowDisposition="IgnoreFailure"
+                      exclusionGroup="1"
+                      name="Lookup Match Output"
+                      synchronousInputId="Package\Contenedor Novedades\Novedades Cliente\Lookup.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Novedades Cliente\Lookup.Outputs[Lookup Match Output].Columns[ID_CLIENTE]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Copy Column"
+                          lineageId="Package\Contenedor Novedades\Novedades Cliente\Lookup.Outputs[Lookup Match Output].Columns[ID_CLIENTE]"
+                          name="ID_CLIENTE"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn">ID_CLIENTE</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Novedades Cliente\Lookup.Outputs[Lookup Match Output].Columns[Desc_Cod_CLIENTE]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Copy Column"
+                          length="255"
+                          lineageId="Package\Contenedor Novedades\Novedades Cliente\Lookup.Outputs[Lookup Match Output].Columns[Desc_Cod_CLIENTE]"
+                          name="Desc_Cod_CLIENTE"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn">Desc_Cod_CLIENTE</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Novedades Cliente\Lookup.Outputs[Lookup Match Output].Columns[Desc_NOMBRE]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Copy Column"
+                          length="255"
+                          lineageId="Package\Contenedor Novedades\Novedades Cliente\Lookup.Outputs[Lookup Match Output].Columns[Desc_NOMBRE]"
+                          name="Desc_NOMBRE"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn">Desc_NOMBRE</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Novedades Cliente\Lookup.Outputs[Lookup Match Output].Columns[Desc_EDAD]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Copy Column"
+                          lineageId="Package\Contenedor Novedades\Novedades Cliente\Lookup.Outputs[Lookup Match Output].Columns[Desc_EDAD]"
+                          name="Desc_EDAD"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn">Desc_EDAD</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Novedades Cliente\Lookup.Outputs[Lookup Match Output].Columns[ESTADO_CIVIL]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Copy Column"
+                          length="255"
+                          lineageId="Package\Contenedor Novedades\Novedades Cliente\Lookup.Outputs[Lookup Match Output].Columns[ESTADO_CIVIL]"
+                          name="ESTADO_CIVIL"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn">ESTADO_CIVIL</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Contenedor Novedades\Novedades Cliente\Lookup.Outputs[Lookup No Match Output]"
+                      description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                      exclusionGroup="1"
+                      name="Lookup No Match Output"
+                      synchronousInputId="Package\Contenedor Novedades\Novedades Cliente\Lookup.Inputs[Lookup Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Contenedor Novedades\Novedades Cliente\Lookup.Outputs[Lookup Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Lookup Error Output"
+                      synchronousInputId="Package\Contenedor Novedades\Novedades Cliente\Lookup.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Novedades Cliente\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Novedades\Novedades Cliente\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Novedades Cliente\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Novedades\Novedades Cliente\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Contenedor Novedades\Novedades Cliente\Tabla de paso"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="Tabla de paso"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Cliente_Paso]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Contenedor Novedades\Novedades Cliente\Tabla de paso.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[EC2AMAZ-S4OAO10.Americans_DW]"
+                      connectionManagerRefId="Package.ConnectionManagers[EC2AMAZ-S4OAO10.Americans_DW]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Contenedor Novedades\Novedades Cliente\Tabla de paso.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Novedades Cliente\Tabla de paso.Outputs[OLE DB Source Output].Columns[ID_CLIENTE]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor Novedades\Novedades Cliente\Tabla de paso.Outputs[OLE DB Source Output].ExternalColumns[ID_CLIENTE]"
+                          lineageId="Package\Contenedor Novedades\Novedades Cliente\Tabla de paso.Outputs[OLE DB Source Output].Columns[ID_CLIENTE]"
+                          name="ID_CLIENTE"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Novedades Cliente\Tabla de paso.Outputs[OLE DB Source Output].Columns[Desc_Cod_CLIENTE]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor Novedades\Novedades Cliente\Tabla de paso.Outputs[OLE DB Source Output].ExternalColumns[Desc_Cod_CLIENTE]"
+                          length="255"
+                          lineageId="Package\Contenedor Novedades\Novedades Cliente\Tabla de paso.Outputs[OLE DB Source Output].Columns[Desc_Cod_CLIENTE]"
+                          name="Desc_Cod_CLIENTE"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Novedades Cliente\Tabla de paso.Outputs[OLE DB Source Output].Columns[Desc_NOMBRE]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor Novedades\Novedades Cliente\Tabla de paso.Outputs[OLE DB Source Output].ExternalColumns[Desc_NOMBRE]"
+                          length="255"
+                          lineageId="Package\Contenedor Novedades\Novedades Cliente\Tabla de paso.Outputs[OLE DB Source Output].Columns[Desc_NOMBRE]"
+                          name="Desc_NOMBRE"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Novedades Cliente\Tabla de paso.Outputs[OLE DB Source Output].Columns[Desc_EDAD]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor Novedades\Novedades Cliente\Tabla de paso.Outputs[OLE DB Source Output].ExternalColumns[Desc_EDAD]"
+                          lineageId="Package\Contenedor Novedades\Novedades Cliente\Tabla de paso.Outputs[OLE DB Source Output].Columns[Desc_EDAD]"
+                          name="Desc_EDAD"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Novedades Cliente\Tabla de paso.Outputs[OLE DB Source Output].Columns[ESTADO_CIVIL]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor Novedades\Novedades Cliente\Tabla de paso.Outputs[OLE DB Source Output].ExternalColumns[ESTADO_CIVIL]"
+                          length="255"
+                          lineageId="Package\Contenedor Novedades\Novedades Cliente\Tabla de paso.Outputs[OLE DB Source Output].Columns[ESTADO_CIVIL]"
+                          name="ESTADO_CIVIL"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Novedades\Novedades Cliente\Tabla de paso.Outputs[OLE DB Source Output].ExternalColumns[ID_CLIENTE]"
+                          dataType="i4"
+                          name="ID_CLIENTE" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Novedades\Novedades Cliente\Tabla de paso.Outputs[OLE DB Source Output].ExternalColumns[Desc_Cod_CLIENTE]"
+                          dataType="wstr"
+                          length="255"
+                          name="Desc_Cod_CLIENTE" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Novedades\Novedades Cliente\Tabla de paso.Outputs[OLE DB Source Output].ExternalColumns[Desc_NOMBRE]"
+                          dataType="wstr"
+                          length="255"
+                          name="Desc_NOMBRE" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Novedades\Novedades Cliente\Tabla de paso.Outputs[OLE DB Source Output].ExternalColumns[Desc_EDAD]"
+                          dataType="i2"
+                          name="Desc_EDAD" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Novedades\Novedades Cliente\Tabla de paso.Outputs[OLE DB Source Output].ExternalColumns[ESTADO_CIVIL]"
+                          dataType="wstr"
+                          length="255"
+                          name="ESTADO_CIVIL" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Contenedor Novedades\Novedades Cliente\Tabla de paso.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Novedades Cliente\Tabla de paso.Outputs[OLE DB Source Error Output].Columns[ID_CLIENTE]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Novedades\Novedades Cliente\Tabla de paso.Outputs[OLE DB Source Error Output].Columns[ID_CLIENTE]"
+                          name="ID_CLIENTE" />
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Novedades Cliente\Tabla de paso.Outputs[OLE DB Source Error Output].Columns[Desc_Cod_CLIENTE]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Contenedor Novedades\Novedades Cliente\Tabla de paso.Outputs[OLE DB Source Error Output].Columns[Desc_Cod_CLIENTE]"
+                          name="Desc_Cod_CLIENTE" />
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Novedades Cliente\Tabla de paso.Outputs[OLE DB Source Error Output].Columns[Desc_NOMBRE]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Contenedor Novedades\Novedades Cliente\Tabla de paso.Outputs[OLE DB Source Error Output].Columns[Desc_NOMBRE]"
+                          name="Desc_NOMBRE" />
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Novedades Cliente\Tabla de paso.Outputs[OLE DB Source Error Output].Columns[Desc_EDAD]"
+                          dataType="i2"
+                          lineageId="Package\Contenedor Novedades\Novedades Cliente\Tabla de paso.Outputs[OLE DB Source Error Output].Columns[Desc_EDAD]"
+                          name="Desc_EDAD" />
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Novedades Cliente\Tabla de paso.Outputs[OLE DB Source Error Output].Columns[ESTADO_CIVIL]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Contenedor Novedades\Novedades Cliente\Tabla de paso.Outputs[OLE DB Source Error Output].Columns[ESTADO_CIVIL]"
+                          name="ESTADO_CIVIL" />
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Novedades Cliente\Tabla de paso.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Novedades\Novedades Cliente\Tabla de paso.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Novedades Cliente\Tabla de paso.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Novedades\Novedades Cliente\Tabla de paso.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Contenedor Novedades\Novedades Cliente.Paths[Actualizar]"
+                  endId="Package\Contenedor Novedades\Novedades Cliente\Actualizar.Inputs[OLE DB Command Input]"
+                  name="Actualizar"
+                  startId="Package\Contenedor Novedades\Novedades Cliente\Conditional Split.Outputs[Actualizar]" />
+                <path
+                  refId="Package\Contenedor Novedades\Novedades Cliente.Paths[Insertar]"
+                  endId="Package\Contenedor Novedades\Novedades Cliente\Insertar.Inputs[OLE DB Destination Input]"
+                  name="Insertar"
+                  startId="Package\Contenedor Novedades\Novedades Cliente\Conditional Split.Outputs[Insertar]" />
+                <path
+                  refId="Package\Contenedor Novedades\Novedades Cliente.Paths[Lookup Match Output]"
+                  endId="Package\Contenedor Novedades\Novedades Cliente\Conditional Split.Inputs[Conditional Split Input]"
+                  name="Lookup Match Output"
+                  startId="Package\Contenedor Novedades\Novedades Cliente\Lookup.Outputs[Lookup Match Output]" />
+                <path
+                  refId="Package\Contenedor Novedades\Novedades Cliente.Paths[OLE DB Source Output]"
+                  endId="Package\Contenedor Novedades\Novedades Cliente\Lookup.Inputs[Lookup Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Contenedor Novedades\Novedades Cliente\Tabla de paso.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Contenedor Novedades.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{428AA220-AAE1-4B38-A144-C0C1F3E4147D}"
+          DTS:From="Package\Contenedor Novedades\Elimina nov cliente"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Contenedor Novedades\Excel" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Contenedor Novedades.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{8B396E3C-9B6F-4858-BB8C-A6BF19491006}"
+          DTS:From="Package\Contenedor Novedades\Excel"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Contenedor Novedades\Novedades Cliente" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\Dimensiones"
       DTS:CreationName="STOCK:SEQUENCE"
@@ -8140,6 +9607,14 @@
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 1"
       DTS:To="Package\Sequence Container" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{64BDABEB-6DD2-4BC2-B8DD-C34AE67BB1ED}"
+      DTS:From="Package\Sequence Container"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Contenedor Novedades" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -8152,7 +9627,7 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="144,42"
           Id="Package\Dimensiones\Dim_CLIENTE"
@@ -8178,12 +9653,12 @@
           Id="Package\Dimensiones\Dim_VENDEDOR"
           TopLeft="18.1428634804124,305.800006198883" />
         <ContainerLayout
-          HeaderHeight="43.2"
+          HeaderHeight="43"
           IsExpanded="True"
           PanelSize="316,406"
           Size="316,449"
           Id="Package\Dimensiones"
-          TopLeft="336.285709590328,357.352945080265" />
+          TopLeft="312.285709590328,109.352945080265" />
         <NodeLayout
           Size="214,42"
           Id="Package\Reseteo Dimensiones\Reseteo Modelo Dimensional"
@@ -8194,7 +9669,7 @@
           PanelSize="246,69"
           Size="246,112"
           Id="Package\Reseteo Dimensiones"
-          TopLeft="45.8571411176603,317.870592042567" />
+          TopLeft="48.8571411176603,103.870592042567" />
         <NodeLayout
           Size="128,42"
           Id="Package\Sequence Container\FT_Ventas"
@@ -8205,33 +9680,33 @@
           PanelSize="205,107"
           Size="205,150"
           Id="Package\Sequence Container"
-          TopLeft="743.571441234375,367.058828677273" />
+          TopLeft="665.571441234375,104.058828677273" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="291.85714111766,373.870592042567">
+          TopLeft="171.85714111766,103.870592042567">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="44.4285684726677,207.982353037698"
+              EndConnector="298.428568472668,5.48235303769803"
               Start="0,0"
-              End="36.9285684726677,207.982353037698">
+              End="298.428568472668,-2.01764696230197">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="18.2142842363339,0" />
+                    End="0,-18.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="18.2142842363339,0"
-                    Point2="22.2142842363339,0"
-                    Point3="22.2142842363339,4" />
+                    Point1="0,-18.5"
+                    Point2="0,-22.5"
+                    Point3="4,-22.5" />
                   <mssgle:LineSegment
-                    End="22.2142842363339,203.982353037698" />
+                    End="294.428568472668,-22.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="22.2142842363339,203.982353037698"
-                    Point2="22.2142842363339,207.982353037698"
-                    Point3="26.2142842363339,207.982353037698" />
+                    Point1="294.428568472668,-22.5"
+                    Point2="298.428568472668,-22.5"
+                    Point3="298.428568472668,-18.5" />
                   <mssgle:LineSegment
-                    End="36.9285684726677,207.982353037698" />
+                    End="298.428568472668,-2.01764696230197" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -8242,30 +9717,115 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="652.285709590328,581.852945080265">
+          TopLeft="628.285709590328,333.852945080265">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="91.285731644047,-139.794116402992"
+              EndConnector="37.285731644047,-154.794116402992"
               Start="0,0"
-              End="83.785731644047,-139.794116402992">
+              End="29.785731644047,-154.794116402992">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="41.6428658220235,0" />
+                    End="14.6428658220235,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="41.6428658220235,0"
-                    Point2="45.6428658220235,0"
-                    Point3="45.6428658220235,-4" />
+                    Point1="14.6428658220235,0"
+                    Point2="18.6428658220235,0"
+                    Point3="18.6428658220235,-4" />
                   <mssgle:LineSegment
-                    End="45.6428658220235,-135.794116402992" />
+                    End="18.6428658220235,-150.794116402992" />
                   <mssgle:CubicBezierSegment
-                    Point1="45.6428658220235,-135.794116402992"
-                    Point2="45.6428658220235,-139.794116402992"
-                    Point3="49.6428658220235,-139.794116402992" />
+                    Point1="18.6428658220235,-150.794116402992"
+                    Point2="18.6428658220235,-154.794116402992"
+                    Point3="22.6428658220235,-154.794116402992" />
                   <mssgle:LineSegment
-                    End="83.785731644047,-139.794116402992" />
+                    End="29.785731644047,-154.794116402992" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="167,42"
+          Id="Package\Contenedor Novedades\Elimina nov cliente"
+          TopLeft="34,7" />
+        <NodeLayout
+          Size="103,42"
+          Id="Package\Contenedor Novedades\Excel"
+          TopLeft="70,85" />
+        <NodeLayout
+          Size="166,42"
+          Id="Package\Contenedor Novedades\Novedades Cliente"
+          TopLeft="33,154" />
+        <EdgeLayout
+          Id="Package\Contenedor Novedades.PrecedenceConstraints[Constraint]"
+          TopLeft="119.5,49">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,36"
+              Start="0,0"
+              End="0,28.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Contenedor Novedades.PrecedenceConstraints[Constraint 1]"
+          TopLeft="118.75,127">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,27"
+              Start="0,0"
+              End="0,19.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="211,250"
+          Size="211,293"
+          Id="Package\Contenedor Novedades"
+          TopLeft="664,355" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="768.785720617188,254.058828677273">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,100.941171322727"
+              Start="0,0"
+              End="0,93.441171322727">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,93.441171322727" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -9160,7 +10720,7 @@
     design-time-name="Package\Dimensiones\Dim_TIEMPO">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="163.2,41.6"
           Id="Package\Dimensiones\Dim_TIEMPO\Derived Column 1"
@@ -9196,7 +10756,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9230,7 +10792,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9252,7 +10816,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -9288,15 +10854,15 @@
     design-time-name="Package\Dimensiones\Dim_VENDEDOR">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="149.6,41.6"
-          Id="Package\Dimensiones\Dim_VENDEDOR\OLE DB Source"
-          TopLeft="346,113" />
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="170.4,41.6"
           Id="Package\Dimensiones\Dim_VENDEDOR\OLE DB Destination"
           TopLeft="131,360" />
+        <NodeLayout
+          Size="149.6,41.6"
+          Id="Package\Dimensiones\Dim_VENDEDOR\OLE DB Source"
+          TopLeft="346,113" />
         <NodeLayout
           Size="152.8,41.6"
           Id="Package\Dimensiones\Dim_VENDEDOR\Derived Column"
@@ -9332,7 +10898,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9366,7 +10934,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -9402,23 +10972,55 @@
     design-time-name="Package\Sequence Container\FT_Ventas">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="144.8,41.6"
+          Id="Package\Sequence Container\FT_Ventas\VENDEDORES"
+          TopLeft="712,451" />
+        <NodeLayout
+          Size="106.4,41.6"
+          Id="Package\Sequence Container\FT_Ventas\Sort 1"
+          TopLeft="552,308" />
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\Sequence Container\FT_Ventas\Derived Column"
+          TopLeft="534,500" />
         <NodeLayout
           Size="116.8,41.6"
           Id="Package\Sequence Container\FT_Ventas\VENTAS"
           TopLeft="235,195" />
         <NodeLayout
-          Size="115.2,41.6"
-          Id="Package\Sequence Container\FT_Ventas\DETLLA"
-          TopLeft="442,197" />
+          Size="138.4,41.6"
+          Id="Package\Sequence Container\FT_Ventas\Merge Join 1"
+          TopLeft="715,677" />
         <NodeLayout
           Size="97.6,41.6"
           Id="Package\Sequence Container\FT_Ventas\Sort"
           TopLeft="290,282" />
         <NodeLayout
           Size="106.4,41.6"
-          Id="Package\Sequence Container\FT_Ventas\Sort 1"
-          TopLeft="552,308" />
+          Id="Package\Sequence Container\FT_Ventas\Sort 3"
+          TopLeft="778,576.8" />
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\Sequence Container\FT_Ventas\OLE DB Destination"
+          TopLeft="541,757.2" />
+        <NodeLayout
+          Size="115.2,41.6"
+          Id="Package\Sequence Container\FT_Ventas\DETLLA"
+          TopLeft="442,197" />
+        <NodeLayout
+          Size="106.4,41.6"
+          Id="Package\Sequence Container\FT_Ventas\Sort 2"
+          TopLeft="576,606" />
+        <NodeLayout
+          Size="155.2,41.6"
+          Id="Package\Sequence Container\FT_Ventas\Data Conversion"
+          TopLeft="767,753.2" />
+        <NodeLayout
+          Size="129.6,41.6"
+          Id="Package\Sequence Container\FT_Ventas\Merge Join"
+          TopLeft="474,436" />
         <EdgeLayout
           Id="Package\Sequence Container\FT_Ventas.Paths[OLE DB Source Output]"
           TopLeft="293.4,236.6">
@@ -9450,123 +11052,47 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Sequence Container\FT_Ventas.Paths[OLE DB Source Output1]"
-          TopLeft="499.6,238.6">
+          Id="Package\Sequence Container\FT_Ventas.Paths[Merge Join Output1]"
+          TopLeft="784.2,718.6">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="105.6,69.4"
+              EndConnector="60.4000000000001,34.6"
               Start="0,0"
-              End="105.6,61.9">
+              End="60.4000000000001,27.1">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,30.7" />
+                    End="0,13.3" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,30.7"
-                    Point2="0,34.7"
-                    Point3="4,34.7" />
+                    Point1="0,13.3"
+                    Point2="0,17.3"
+                    Point3="4,17.3" />
                   <mssgle:LineSegment
-                    End="101.6,34.7" />
+                    End="56.4000000000001,17.3" />
                   <mssgle:CubicBezierSegment
-                    Point1="101.6,34.7"
-                    Point2="105.6,34.7"
-                    Point3="105.6,38.7" />
+                    Point1="56.4000000000001,17.3"
+                    Point2="60.4000000000001,17.3"
+                    Point3="60.4000000000001,21.3" />
                   <mssgle:LineSegment
-                    End="105.6,61.9" />
+                    End="60.4000000000001,27.1" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="129.6,41.6"
-          Id="Package\Sequence Container\FT_Ventas\Merge Join"
-          TopLeft="474,436" />
-        <EdgeLayout
-          Id="Package\Sequence Container\FT_Ventas.Paths[Sort Output]"
-          TopLeft="338.8,323.6">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="200,112.4"
-              Start="0,0"
-              End="200,104.9">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.2" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,52.2"
-                    Point2="0,56.2"
-                    Point3="4,56.2" />
-                  <mssgle:LineSegment
-                    End="196,56.2" />
-                  <mssgle:CubicBezierSegment
-                    Point1="196,56.2"
-                    Point2="200,56.2"
-                    Point3="200,60.2" />
-                  <mssgle:LineSegment
-                    End="200,104.9" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Sequence Container\FT_Ventas.Paths[Sort Output1]"
-          TopLeft="605.2,349.6">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-46.1333333333333,86.4"
-              Start="0,0"
-              End="-46.1333333333333,78.9">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,47.2078048780488" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,47.2078048780488"
-                    Point2="0,51.2078048780488"
-                    Point3="-4,51.2078048780488" />
-                  <mssgle:LineSegment
-                    End="-42.1333333333333,51.2078048780488" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-42.1333333333333,51.2078048780488"
-                    Point2="-46.1333333333333,51.2078048780488"
-                    Point3="-46.1333333333333,55.2078048780488" />
-                  <mssgle:LineSegment
-                    End="-46.1333333333333,78.9" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="144.8,41.6"
-          Id="Package\Sequence Container\FT_Ventas\VENDEDORES"
-          TopLeft="712,451" />
-        <NodeLayout
-          Size="152.8,41.6"
-          Id="Package\Sequence Container\FT_Ventas\Derived Column"
-          TopLeft="534,500" />
         <EdgeLayout
           Id="Package\Sequence Container\FT_Ventas.Paths[Merge Join Output]"
           TopLeft="603.6,456.8">
@@ -9592,17 +11118,11 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="106.4,41.6"
-          Id="Package\Sequence Container\FT_Ventas\Sort 2"
-          TopLeft="576,606" />
-        <NodeLayout
-          Size="106.4,41.6"
-          Id="Package\Sequence Container\FT_Ventas\Sort 3"
-          TopLeft="778,576.8" />
         <EdgeLayout
           Id="Package\Sequence Container\FT_Ventas.Paths[Derived Column Output]"
           TopLeft="610.4,541.6">
@@ -9634,79 +11154,33 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Sequence Container\FT_Ventas.Paths[OLE DB Source Output2]"
-          TopLeft="784.4,492.6">
+          Id="Package\Sequence Container\FT_Ventas.Paths[Data Conversion Output]"
+          TopLeft="767,776">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="46.8000000000002,84.1999999999999"
+              EndConnector="-55.5999999999999,0"
               Start="0,0"
-              End="46.8000000000002,76.6999999999999">
+              End="-48.0999999999999,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,38.1" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,38.1"
-                    Point2="0,42.1"
-                    Point3="4,42.1" />
-                  <mssgle:LineSegment
-                    End="42.8000000000002,42.1" />
-                  <mssgle:CubicBezierSegment
-                    Point1="42.8000000000002,42.1"
-                    Point2="46.8000000000002,42.1"
-                    Point3="46.8000000000002,46.1" />
-                  <mssgle:LineSegment
-                    End="46.8000000000002,76.6999999999999" />
+                    End="-48.0999999999999,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="138.4,41.6"
-          Id="Package\Sequence Container\FT_Ventas\Merge Join 1"
-          TopLeft="715,677" />
-        <EdgeLayout
-          Id="Package\Sequence Container\FT_Ventas.Paths[Sort Output2]"
-          TopLeft="629.2,647.6">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="155,29.4"
-              Start="0,0"
-              End="155,21.9">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,10.7" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,10.7"
-                    Point2="0,14.7"
-                    Point3="4,14.7" />
-                  <mssgle:LineSegment
-                    End="151,14.7" />
-                  <mssgle:CubicBezierSegment
-                    Point1="151,14.7"
-                    Point2="155,14.7"
-                    Point3="155,18.7" />
-                  <mssgle:LineSegment
-                    End="155,21.9" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9740,71 +11214,189 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="155.2,41.6"
-          Id="Package\Sequence Container\FT_Ventas\Data Conversion"
-          TopLeft="767,753.2" />
         <EdgeLayout
-          Id="Package\Sequence Container\FT_Ventas.Paths[Merge Join Output1]"
-          TopLeft="784.2,718.6">
+          Id="Package\Sequence Container\FT_Ventas.Paths[Sort Output2]"
+          TopLeft="629.2,647.6">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="60.4000000000001,34.6"
+              EndConnector="155,29.4"
               Start="0,0"
-              End="60.4000000000001,27.1">
+              End="155,21.9">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,13.3" />
+                    End="0,10.7" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,13.3"
-                    Point2="0,17.3"
-                    Point3="4,17.3" />
+                    Point1="0,10.7"
+                    Point2="0,14.7"
+                    Point3="4,14.7" />
                   <mssgle:LineSegment
-                    End="56.4000000000001,17.3" />
+                    End="151,14.7" />
                   <mssgle:CubicBezierSegment
-                    Point1="56.4000000000001,17.3"
-                    Point2="60.4000000000001,17.3"
-                    Point3="60.4000000000001,21.3" />
+                    Point1="151,14.7"
+                    Point2="155,14.7"
+                    Point3="155,18.7" />
                   <mssgle:LineSegment
-                    End="60.4000000000001,27.1" />
+                    End="155,21.9" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="170.4,41.6"
-          Id="Package\Sequence Container\FT_Ventas\OLE DB Destination"
-          TopLeft="541,757.2" />
         <EdgeLayout
-          Id="Package\Sequence Container\FT_Ventas.Paths[Data Conversion Output]"
-          TopLeft="767,776">
+          Id="Package\Sequence Container\FT_Ventas.Paths[Sort Output1]"
+          TopLeft="605.2,349.6">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-55.5999999999999,0"
+              EndConnector="-46.1333333333333,86.4"
               Start="0,0"
-              End="-48.0999999999999,0">
+              End="-46.1333333333333,78.9">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-48.0999999999999,0" />
+                    End="0,47.2078048780488" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,47.2078048780488"
+                    Point2="0,51.2078048780488"
+                    Point3="-4,51.2078048780488" />
+                  <mssgle:LineSegment
+                    End="-42.1333333333333,51.2078048780488" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-42.1333333333333,51.2078048780488"
+                    Point2="-46.1333333333333,51.2078048780488"
+                    Point3="-46.1333333333333,55.2078048780488" />
+                  <mssgle:LineSegment
+                    End="-46.1333333333333,78.9" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container\FT_Ventas.Paths[Sort Output]"
+          TopLeft="338.8,323.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="200,112.4"
+              Start="0,0"
+              End="200,104.9">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.2" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,52.2"
+                    Point2="0,56.2"
+                    Point3="4,56.2" />
+                  <mssgle:LineSegment
+                    End="196,56.2" />
+                  <mssgle:CubicBezierSegment
+                    Point1="196,56.2"
+                    Point2="200,56.2"
+                    Point3="200,60.2" />
+                  <mssgle:LineSegment
+                    End="200,104.9" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container\FT_Ventas.Paths[OLE DB Source Output2]"
+          TopLeft="784.4,492.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="46.8000000000002,84.1999999999999"
+              Start="0,0"
+              End="46.8000000000002,76.6999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.1" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,38.1"
+                    Point2="0,42.1"
+                    Point3="4,42.1" />
+                  <mssgle:LineSegment
+                    End="42.8000000000002,42.1" />
+                  <mssgle:CubicBezierSegment
+                    Point1="42.8000000000002,42.1"
+                    Point2="46.8000000000002,42.1"
+                    Point3="46.8000000000002,46.1" />
+                  <mssgle:LineSegment
+                    End="46.8000000000002,76.6999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container\FT_Ventas.Paths[OLE DB Source Output1]"
+          TopLeft="499.6,238.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="105.6,69.4"
+              Start="0,0"
+              End="105.6,61.9">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.7" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,30.7"
+                    Point2="0,34.7"
+                    Point3="4,34.7" />
+                  <mssgle:LineSegment
+                    End="101.6,34.7" />
+                  <mssgle:CubicBezierSegment
+                    Point1="101.6,34.7"
+                    Point2="105.6,34.7"
+                    Point3="105.6,38.7" />
+                  <mssgle:LineSegment
+                    End="105.6,61.9" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -9851,6 +11443,315 @@
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Sequence Container\FT_Ventas\VENTAS">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Contenedor Novedades\Excel">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="134,42"
+          Id="Package\Contenedor Novedades\Excel\NovClientes"
+          TopLeft="170,66" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\Contenedor Novedades\Excel\Data Conversion"
+          TopLeft="374,166" />
+        <EdgeLayout
+          Id="Package\Contenedor Novedades\Excel.Paths[Excel Source Output]"
+          TopLeft="237,108">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="215,58"
+              Start="0,0"
+              End="215,50.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,25"
+                    Point2="0,29"
+                    Point3="4,29" />
+                  <mssgle:LineSegment
+                    End="211,29" />
+                  <mssgle:CubicBezierSegment
+                    Point1="211,29"
+                    Point2="215,29"
+                    Point3="215,33" />
+                  <mssgle:LineSegment
+                    End="215,50.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="136,42"
+          Id="Package\Contenedor Novedades\Excel\Cliente Paso"
+          TopLeft="442,288" />
+        <EdgeLayout
+          Id="Package\Contenedor Novedades\Excel.Paths[Data Conversion Output]"
+          TopLeft="452,208">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="58,80"
+              Start="0,0"
+              End="58,72.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,36"
+                    Point2="0,40"
+                    Point3="4,40" />
+                  <mssgle:LineSegment
+                    End="54,40" />
+                  <mssgle:CubicBezierSegment
+                    Point1="54,40"
+                    Point2="58,40"
+                    Point3="58,44" />
+                  <mssgle:LineSegment
+                    End="58,72.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\Contenedor Novedades\Novedades Cliente">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="145,42"
+          Id="Package\Contenedor Novedades\Novedades Cliente\Tabla de paso"
+          TopLeft="161,66" />
+        <NodeLayout
+          Size="113,42"
+          Id="Package\Contenedor Novedades\Novedades Cliente\Lookup"
+          TopLeft="174,171" />
+        <EdgeLayout
+          Id="Package\Contenedor Novedades\Novedades Cliente.Paths[OLE DB Source Output]"
+          TopLeft="232,108">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,63"
+              Start="0,0"
+              End="0,55.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,55.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="155,42"
+          Id="Package\Contenedor Novedades\Novedades Cliente\Conditional Split"
+          TopLeft="148,274" />
+        <EdgeLayout
+          Id="Package\Contenedor Novedades\Novedades Cliente.Paths[Lookup Match Output]"
+          TopLeft="228,213">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,61"
+              Start="0,0"
+              End="0,53.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,53.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.9453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="116,42"
+          Id="Package\Contenedor Novedades\Novedades Cliente\Insertar"
+          TopLeft="91,366" />
+        <EdgeLayout
+          Id="Package\Contenedor Novedades\Novedades Cliente.Paths[Insertar]"
+          TopLeft="225.5,316">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-76.5,50"
+              Start="0,0"
+              End="-76.5,42.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21"
+                    Point2="0,25"
+                    Point3="-4,25" />
+                  <mssgle:LineSegment
+                    End="-72.5,25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-72.5,25"
+                    Point2="-76.5,25"
+                    Point3="-76.5,29" />
+                  <mssgle:LineSegment
+                    End="-76.5,42.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-56.41029296875,30,36.3205859375,9.421875"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="124,42"
+          Id="Package\Contenedor Novedades\Novedades Cliente\Actualizar"
+          TopLeft="326,385" />
+        <EdgeLayout
+          Id="Package\Contenedor Novedades\Novedades Cliente.Paths[Actualizar]"
+          TopLeft="250,316">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="138,69"
+              Start="0,0"
+              End="138,61.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.0229885057471" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.0229885057471"
+                    Point2="0,28.0229885057471"
+                    Point3="4,28.0229885057471" />
+                  <mssgle:LineSegment
+                    End="134,28.0229885057471" />
+                  <mssgle:CubicBezierSegment
+                    Point1="134,28.0229885057471"
+                    Point2="138,28.0229885057471"
+                    Point3="138,32.0229885057471" />
+                  <mssgle:LineSegment
+                    End="138,61.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="46.6732421875,33.0229885057471,44.653515625,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Contenedor Novedades\Excel\NovClientes">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Contenedor Novedades\Excel\Cliente Paso">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Contenedor Novedades\Novedades Cliente\Tabla de paso">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Contenedor Novedades\Novedades Cliente\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Dim_CLIENTE]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Contenedor Novedades\Novedades Cliente\Insertar">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
