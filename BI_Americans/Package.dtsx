@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="66"
-  DTS:VersionGUID="{EF132BC3-68A2-4E56-A6C2-DCF03C597545}">
+  DTS:VersionBuild="68"
+  DTS:VersionGUID="{E38E1DD5-BD6E-4A4C-BAAF-96BBA4E3326C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -49,7 +49,7 @@
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="0"
           DTS:ConnectRetryInterval="0"
-          DTS:ConnectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Bases\dimtiempo.xls;Extended Properties=&quot;EXCEL 8.0;HDR=YES&quot;;" />
+          DTS:ConnectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Bases\Trabajos BI\Americans\dimtiempo97.xls;Extended Properties=&quot;EXCEL 8.0;HDR=YES&quot;;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -85,7 +85,7 @@
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="0"
           DTS:ConnectRetryInterval="0"
-          DTS:ConnectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Bases\dimtiempo97.xls;Extended Properties=&quot;EXCEL 8.0;HDR=YES&quot;;" />
+          DTS:ConnectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Bases\Trabajos BI\Americans\dimtiempo97.xls;Extended Properties=&quot;EXCEL 8.0;HDR=YES&quot;;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -97,7 +97,7 @@
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="0"
           DTS:ConnectRetryInterval="0"
-          DTS:ConnectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Administrator\Downloads\Novedades cliente97.xls;Extended Properties=&quot;Excel 8.0;HDR=YES&quot;;" />
+          DTS:ConnectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Administrator\Downloads\Novedades cliente97.xls;Extended Properties=&quot;EXCEL 8.0;HDR=YES&quot;;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -9629,6 +9629,69 @@ where [refTable].[ID_CLIENTE] = ?</property>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
+          Size="167,42"
+          Id="Package\Contenedor Novedades\Elimina nov cliente"
+          TopLeft="34,7" />
+        <NodeLayout
+          Size="103,42"
+          Id="Package\Contenedor Novedades\Excel"
+          TopLeft="70,85" />
+        <NodeLayout
+          Size="166,42"
+          Id="Package\Contenedor Novedades\Novedades Cliente"
+          TopLeft="33,154" />
+        <EdgeLayout
+          Id="Package\Contenedor Novedades.PrecedenceConstraints[Constraint]"
+          TopLeft="119.5,49">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,36"
+              Start="0,0"
+              End="0,28.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Contenedor Novedades.PrecedenceConstraints[Constraint 1]"
+          TopLeft="118.75,127">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,27"
+              Start="0,0"
+              End="0,19.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="211,250"
+          Size="211,293"
+          Id="Package\Contenedor Novedades"
+          TopLeft="664,355" />
+        <NodeLayout
           Size="144,42"
           Id="Package\Dimensiones\Dim_CLIENTE"
           TopLeft="20,5.5" />
@@ -9749,69 +9812,6 @@ where [refTable].[ID_CLIENTE] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="167,42"
-          Id="Package\Contenedor Novedades\Elimina nov cliente"
-          TopLeft="34,7" />
-        <NodeLayout
-          Size="103,42"
-          Id="Package\Contenedor Novedades\Excel"
-          TopLeft="70,85" />
-        <NodeLayout
-          Size="166,42"
-          Id="Package\Contenedor Novedades\Novedades Cliente"
-          TopLeft="33,154" />
-        <EdgeLayout
-          Id="Package\Contenedor Novedades.PrecedenceConstraints[Constraint]"
-          TopLeft="119.5,49">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,36"
-              Start="0,0"
-              End="0,28.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,28.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Contenedor Novedades.PrecedenceConstraints[Constraint 1]"
-          TopLeft="118.75,127">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,27"
-              Start="0,0"
-              End="0,19.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,19.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="211,250"
-          Size="211,293"
-          Id="Package\Contenedor Novedades"
-          TopLeft="664,355" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
           TopLeft="768.785720617188,254.058828677273">
@@ -9837,6 +9837,315 @@ where [refTable].[ID_CLIENTE] = ?</property>
       </GraphLayout>
     </LayoutInfo>
   </Package>
+  <TaskHost
+    design-time-name="Package\Contenedor Novedades\Excel">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="134,42"
+          Id="Package\Contenedor Novedades\Excel\NovClientes"
+          TopLeft="170,66" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\Contenedor Novedades\Excel\Data Conversion"
+          TopLeft="374,166" />
+        <EdgeLayout
+          Id="Package\Contenedor Novedades\Excel.Paths[Excel Source Output]"
+          TopLeft="237,108">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="215,58"
+              Start="0,0"
+              End="215,50.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,25"
+                    Point2="0,29"
+                    Point3="4,29" />
+                  <mssgle:LineSegment
+                    End="211,29" />
+                  <mssgle:CubicBezierSegment
+                    Point1="211,29"
+                    Point2="215,29"
+                    Point3="215,33" />
+                  <mssgle:LineSegment
+                    End="215,50.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="136,42"
+          Id="Package\Contenedor Novedades\Excel\Cliente Paso"
+          TopLeft="442,288" />
+        <EdgeLayout
+          Id="Package\Contenedor Novedades\Excel.Paths[Data Conversion Output]"
+          TopLeft="452,208">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="58,80"
+              Start="0,0"
+              End="58,72.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,36"
+                    Point2="0,40"
+                    Point3="4,40" />
+                  <mssgle:LineSegment
+                    End="54,40" />
+                  <mssgle:CubicBezierSegment
+                    Point1="54,40"
+                    Point2="58,40"
+                    Point3="58,44" />
+                  <mssgle:LineSegment
+                    End="58,72.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Contenedor Novedades\Excel\Cliente Paso">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Contenedor Novedades\Excel\NovClientes">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Contenedor Novedades\Novedades Cliente">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="145,42"
+          Id="Package\Contenedor Novedades\Novedades Cliente\Tabla de paso"
+          TopLeft="161,66" />
+        <NodeLayout
+          Size="113,42"
+          Id="Package\Contenedor Novedades\Novedades Cliente\Lookup"
+          TopLeft="174,171" />
+        <EdgeLayout
+          Id="Package\Contenedor Novedades\Novedades Cliente.Paths[OLE DB Source Output]"
+          TopLeft="232,108">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,63"
+              Start="0,0"
+              End="0,55.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,55.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="155,42"
+          Id="Package\Contenedor Novedades\Novedades Cliente\Conditional Split"
+          TopLeft="148,274" />
+        <EdgeLayout
+          Id="Package\Contenedor Novedades\Novedades Cliente.Paths[Lookup Match Output]"
+          TopLeft="228,213">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,61"
+              Start="0,0"
+              End="0,53.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,53.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.9453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="116,42"
+          Id="Package\Contenedor Novedades\Novedades Cliente\Insertar"
+          TopLeft="91,366" />
+        <EdgeLayout
+          Id="Package\Contenedor Novedades\Novedades Cliente.Paths[Insertar]"
+          TopLeft="225.5,316">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-76.5,50"
+              Start="0,0"
+              End="-76.5,42.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21"
+                    Point2="0,25"
+                    Point3="-4,25" />
+                  <mssgle:LineSegment
+                    End="-72.5,25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-72.5,25"
+                    Point2="-76.5,25"
+                    Point3="-76.5,29" />
+                  <mssgle:LineSegment
+                    End="-76.5,42.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-56.41029296875,30,36.3205859375,9.421875"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="124,42"
+          Id="Package\Contenedor Novedades\Novedades Cliente\Actualizar"
+          TopLeft="326,385" />
+        <EdgeLayout
+          Id="Package\Contenedor Novedades\Novedades Cliente.Paths[Actualizar]"
+          TopLeft="250,316">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="138,69"
+              Start="0,0"
+              End="138,61.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.0229885057471" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.0229885057471"
+                    Point2="0,28.0229885057471"
+                    Point3="4,28.0229885057471" />
+                  <mssgle:LineSegment
+                    End="134,28.0229885057471" />
+                  <mssgle:CubicBezierSegment
+                    Point1="134,28.0229885057471"
+                    Point2="138,28.0229885057471"
+                    Point3="138,32.0229885057471" />
+                  <mssgle:LineSegment
+                    End="138,61.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="46.6732421875,33.0229885057471,44.653515625,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Contenedor Novedades\Novedades Cliente\Insertar">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Contenedor Novedades\Novedades Cliente\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Dim_CLIENTE]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Contenedor Novedades\Novedades Cliente\Tabla de paso">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\Dimensiones\Dim_CLIENTE">
     <LayoutInfo>
@@ -10720,21 +11029,21 @@ where [refTable].[ID_CLIENTE] = ?</property>
     design-time-name="Package\Dimensiones\Dim_TIEMPO">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="163.2,41.6"
+          Size="163,42"
           Id="Package\Dimensiones\Dim_TIEMPO\Derived Column 1"
           TopLeft="406,283" />
         <NodeLayout
-          Size="139.2,41.6"
+          Size="139,42"
           Id="Package\Dimensiones\Dim_TIEMPO\Excel Source"
           TopLeft="172,132" />
         <NodeLayout
-          Size="153.6,41.6"
+          Size="154,42"
           Id="Package\Dimensiones\Dim_TIEMPO\Derived Column"
           TopLeft="170,282" />
         <NodeLayout
-          Size="171.2,41.6"
+          Size="171,42"
           Id="Package\Dimensiones\Dim_TIEMPO\OLE DB Destination"
           TopLeft="698,298" />
         <EdgeLayout
@@ -10756,9 +11065,7 @@ where [refTable].[ID_CLIENTE] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -10792,9 +11099,7 @@ where [refTable].[ID_CLIENTE] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -10816,9 +11121,7 @@ where [refTable].[ID_CLIENTE] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -10972,53 +11275,53 @@ where [refTable].[ID_CLIENTE] = ?</property>
     design-time-name="Package\Sequence Container\FT_Ventas">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="144.8,41.6"
+          Size="145,42"
           Id="Package\Sequence Container\FT_Ventas\VENDEDORES"
           TopLeft="712,451" />
         <NodeLayout
-          Size="106.4,41.6"
+          Size="106,42"
           Id="Package\Sequence Container\FT_Ventas\Sort 1"
           TopLeft="552,308" />
         <NodeLayout
-          Size="152.8,41.6"
+          Size="153,42"
           Id="Package\Sequence Container\FT_Ventas\Derived Column"
           TopLeft="534,500" />
         <NodeLayout
-          Size="116.8,41.6"
+          Size="117,42"
           Id="Package\Sequence Container\FT_Ventas\VENTAS"
           TopLeft="235,195" />
         <NodeLayout
-          Size="138.4,41.6"
+          Size="138,42"
           Id="Package\Sequence Container\FT_Ventas\Merge Join 1"
           TopLeft="715,677" />
         <NodeLayout
-          Size="97.6,41.6"
+          Size="98,42"
           Id="Package\Sequence Container\FT_Ventas\Sort"
           TopLeft="290,282" />
         <NodeLayout
-          Size="106.4,41.6"
+          Size="106,42"
           Id="Package\Sequence Container\FT_Ventas\Sort 3"
           TopLeft="778,576.8" />
         <NodeLayout
-          Size="170.4,41.6"
+          Size="171,42"
           Id="Package\Sequence Container\FT_Ventas\OLE DB Destination"
-          TopLeft="541,757.2" />
+          TopLeft="525,752.2" />
         <NodeLayout
-          Size="115.2,41.6"
+          Size="115,42"
           Id="Package\Sequence Container\FT_Ventas\DETLLA"
           TopLeft="442,197" />
         <NodeLayout
-          Size="106.4,41.6"
+          Size="106,42"
           Id="Package\Sequence Container\FT_Ventas\Sort 2"
           TopLeft="576,606" />
         <NodeLayout
-          Size="155.2,41.6"
+          Size="155,42"
           Id="Package\Sequence Container\FT_Ventas\Data Conversion"
           TopLeft="767,753.2" />
         <NodeLayout
-          Size="129.6,41.6"
+          Size="130,42"
           Id="Package\Sequence Container\FT_Ventas\Merge Join"
           TopLeft="474,436" />
         <EdgeLayout
@@ -11052,9 +11355,7 @@ where [refTable].[ID_CLIENTE] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -11088,9 +11389,7 @@ where [refTable].[ID_CLIENTE] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -11118,9 +11417,7 @@ where [refTable].[ID_CLIENTE] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -11154,33 +11451,7 @@ where [refTable].[ID_CLIENTE] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Sequence Container\FT_Ventas.Paths[Data Conversion Output]"
-          TopLeft="767,776">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-55.5999999999999,0"
-              Start="0,0"
-              End="-48.0999999999999,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="-48.0999999999999,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -11214,9 +11485,7 @@ where [refTable].[ID_CLIENTE] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -11250,9 +11519,7 @@ where [refTable].[ID_CLIENTE] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -11286,9 +11553,7 @@ where [refTable].[ID_CLIENTE] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -11322,9 +11587,7 @@ where [refTable].[ID_CLIENTE] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -11358,9 +11621,7 @@ where [refTable].[ID_CLIENTE] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -11394,9 +11655,29 @@ where [refTable].[ID_CLIENTE] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container\FT_Ventas.Paths[Data Conversion Output]"
+          TopLeft="767,773.7">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-71,0"
+              Start="0,0"
+              End="-63.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-63.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -11443,315 +11724,6 @@ where [refTable].[ID_CLIENTE] = ?</property>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Sequence Container\FT_Ventas\VENTAS">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Contenedor Novedades\Excel">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="134,42"
-          Id="Package\Contenedor Novedades\Excel\NovClientes"
-          TopLeft="170,66" />
-        <NodeLayout
-          Size="156,42"
-          Id="Package\Contenedor Novedades\Excel\Data Conversion"
-          TopLeft="374,166" />
-        <EdgeLayout
-          Id="Package\Contenedor Novedades\Excel.Paths[Excel Source Output]"
-          TopLeft="237,108">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="215,58"
-              Start="0,0"
-              End="215,50.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,25" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,25"
-                    Point2="0,29"
-                    Point3="4,29" />
-                  <mssgle:LineSegment
-                    End="211,29" />
-                  <mssgle:CubicBezierSegment
-                    Point1="211,29"
-                    Point2="215,29"
-                    Point3="215,33" />
-                  <mssgle:LineSegment
-                    End="215,50.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="136,42"
-          Id="Package\Contenedor Novedades\Excel\Cliente Paso"
-          TopLeft="442,288" />
-        <EdgeLayout
-          Id="Package\Contenedor Novedades\Excel.Paths[Data Conversion Output]"
-          TopLeft="452,208">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="58,80"
-              Start="0,0"
-              End="58,72.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,36" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,36"
-                    Point2="0,40"
-                    Point3="4,40" />
-                  <mssgle:LineSegment
-                    End="54,40" />
-                  <mssgle:CubicBezierSegment
-                    Point1="54,40"
-                    Point2="58,40"
-                    Point3="58,44" />
-                  <mssgle:LineSegment
-                    End="58,72.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <TaskHost
-    design-time-name="Package\Contenedor Novedades\Novedades Cliente">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="145,42"
-          Id="Package\Contenedor Novedades\Novedades Cliente\Tabla de paso"
-          TopLeft="161,66" />
-        <NodeLayout
-          Size="113,42"
-          Id="Package\Contenedor Novedades\Novedades Cliente\Lookup"
-          TopLeft="174,171" />
-        <EdgeLayout
-          Id="Package\Contenedor Novedades\Novedades Cliente.Paths[OLE DB Source Output]"
-          TopLeft="232,108">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,63"
-              Start="0,0"
-              End="0,55.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,55.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="155,42"
-          Id="Package\Contenedor Novedades\Novedades Cliente\Conditional Split"
-          TopLeft="148,274" />
-        <EdgeLayout
-          Id="Package\Contenedor Novedades\Novedades Cliente.Paths[Lookup Match Output]"
-          TopLeft="228,213">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,61"
-              Start="0,0"
-              End="0,53.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,53.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,20.9453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="116,42"
-          Id="Package\Contenedor Novedades\Novedades Cliente\Insertar"
-          TopLeft="91,366" />
-        <EdgeLayout
-          Id="Package\Contenedor Novedades\Novedades Cliente.Paths[Insertar]"
-          TopLeft="225.5,316">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-76.5,50"
-              Start="0,0"
-              End="-76.5,42.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,21" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,21"
-                    Point2="0,25"
-                    Point3="-4,25" />
-                  <mssgle:LineSegment
-                    End="-72.5,25" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-72.5,25"
-                    Point2="-76.5,25"
-                    Point3="-76.5,29" />
-                  <mssgle:LineSegment
-                    End="-76.5,42.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-56.41029296875,30,36.3205859375,9.421875"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="124,42"
-          Id="Package\Contenedor Novedades\Novedades Cliente\Actualizar"
-          TopLeft="326,385" />
-        <EdgeLayout
-          Id="Package\Contenedor Novedades\Novedades Cliente.Paths[Actualizar]"
-          TopLeft="250,316">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="138,69"
-              Start="0,0"
-              End="138,61.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,24.0229885057471" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,24.0229885057471"
-                    Point2="0,28.0229885057471"
-                    Point3="4,28.0229885057471" />
-                  <mssgle:LineSegment
-                    End="134,28.0229885057471" />
-                  <mssgle:CubicBezierSegment
-                    Point1="134,28.0229885057471"
-                    Point2="138,28.0229885057471"
-                    Point3="138,32.0229885057471" />
-                  <mssgle:LineSegment
-                    End="138,61.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="46.6732421875,33.0229885057471,44.653515625,9.7490234375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Contenedor Novedades\Excel\NovClientes">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Contenedor Novedades\Excel\Cliente Paso">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Contenedor Novedades\Novedades Cliente\Tabla de paso">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Contenedor Novedades\Novedades Cliente\Lookup">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[Dim_CLIENTE]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Contenedor Novedades\Novedades Cliente\Insertar">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
